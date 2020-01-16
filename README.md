@@ -7,45 +7,22 @@ A kitchen-sink LINE bot example
 Install npm dependencies:
 
 ```bash
-npm run build-sdk # build SDK installed from local directory
 npm install
 ```
 
 Also, FFmpeg and ImageMagick should be installed to test image and video
 echoing.
 
-### About local dependencies
-
-Currently, [`@line/bot-sdk`](package.json) is installed from local directory.
-
-```json
-{
-  "@line/bot-sdk": "../../"
-}
-```
-
-To install `@line/bot-sdk` from npm, please update the line with the following:
-
-```json
-{
-  "@line/bot-sdk": "*"
-}
-```
-
-In the case, `npm run build-sdk` needn't be run before `npm install`.
-
 ## Configuration
 
-Configuration can be done via environment variables.
+Create .env file in the root folder with these variables.
 
 ```bash
-export CHANNEL_SECRET=YOUR_CHANNEL_SECRET
-export CHANNEL_ACCESS_TOKEN=YOUR_CHANNEL_ACCESS_TOKEN
-export BASE_URL=https://your.base.url # for static file serving
-export PORT=1234
+CHANNEL_SECRET=YOUR_CHANNEL_SECRET
+CHANNEL_ACCESS_TOKEN=YOUR_CHANNEL_ACCESS_TOKEN
+BASE_URL=https://your.base.url # remove BASE_URL if you run it locally
+PORT=80
 ```
-
-The code above is an example of Bash. It may differ in other shells.
 
 ## Run webhook server
 
@@ -53,11 +30,11 @@ The code above is an example of Bash. It may differ in other shells.
 npm start
 ```
 
-With the configuration above, the webhook listens on `https://your.base.url:1234/callback`.
+With the configuration above, the webhook listens on `https://your.base.url:80/callback`.
 
 ## ngrok usage
 
-[ngrok](https://ngrok.com/) tunnels extenral requests to localhost, helps
+[ngrok](https://ngrok.com/) tunnels external requests to localhost, helps
 debugging local webhooks.
 
 This example includes ngrok inside, and it just works if no `BASE_URL` is
